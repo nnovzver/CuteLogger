@@ -18,6 +18,7 @@ DynamicLibrary {
   cpp.defines: "CUTELOGGER_LIBRARY"
 
   Depends { name: "Qt.core" }
+  Depends { name: "Qt.network" }
 
   Export {
     Depends { name: "cpp" }

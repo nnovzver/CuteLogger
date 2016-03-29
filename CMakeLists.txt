@@ -3,6 +3,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 PROJECT(CuteLogger)
 
 FIND_PACKAGE(Qt4 COMPONENTS QtCore REQUIRED)
+FIND_PACKAGE(Qt4 COMPONENTS QtNetwork REQUIRED)
 INCLUDE(${QT_USE_FILE})
 
 ADD_DEFINITIONS(-DCUTELOGGER_LIBRARY)
@@ -16,6 +17,7 @@ SET(sources
   src/ConsoleAppender.cpp
   src/FileAppender.cpp
   src/RollingFileAppender.cpp
+  src/UdpAppender.cpp
 )
 
 SET(includes
@@ -26,6 +28,7 @@ SET(includes
   include/AbstractStringAppender.h
   include/AbstractAppender.h
   include/RollingFileAppender.h
+  include/UdpAppender.h
  )
 
 
