@@ -14,8 +14,6 @@
 // Local
 #include "UdpAppender.h"
 
-// C lib
-#include "string.h"
 
 /**
  * \class UdpAppender
@@ -54,6 +52,6 @@ void UdpAppender::ignoreEnvironmentPattern(bool ignore)
 void UdpAppender::append(const QDateTime& timeStamp, Logger::LogLevel logLevel, const char* file, int line,
                              const char* function, const QString& category, const QString& message)
 {
-  const char *msg = qPrintable(formattedString(timeStamp, logLevel, file, line, function, category, message));
-  m_sock.writeDatagram(msg, ::strlen(msg), m_addr, m_port);
+  QString m = formattedString(timeStamp, logLevel, file, line, function, category, message);
+  m_sock.writeDatagram(qPrintable(m), m.size(), m_addr, m_port);
 }
