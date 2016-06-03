@@ -53,5 +53,6 @@ void UdpAppender::append(const QDateTime& timeStamp, Logger::LogLevel logLevel, 
                              const char* function, const QString& category, const QString& message)
 {
   QString m = formattedString(timeStamp, logLevel, file, line, function, category, message);
-  m_sock.writeDatagram(qPrintable(m), m.size(), m_addr, m_port);
+  QByteArray bytes = m.toUtf8();
+  m_sock.writeDatagram(qPrintable(m), bytes.size(), m_addr, m_port);
 }
